@@ -1,0 +1,141 @@
+gcc -g p3final.c
+ gdb ./a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from ./a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x7fd: file p3final.c, line 29.
+(gdb) r
+Starting program: /home/runner/pps-IA1-practice/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p3final.c:29
+29    int num,count,sum=0;
+(gdb) n
+30    num=input();
+(gdb) s
+input () at p3final.c:3
+3   {
+(gdb) n
+5     printf("Enter a positive integer:");
+(gdb) n
+6     scanf("%d",&num);
+(gdb) n
+Enter a positive integer:5
+7     return num;
+(gdb) n
+8   }
+(gdb) n
+main () at p3final.c:31
+31    count=sum_n(num,count,sum);
+(gdb) s
+sum_n (num=5, count=0, sum=0) at p3final.c:11
+11    for(count=1;count<=num;count++)
+(gdb) n
+13      sum+=count;
+(gdb) n
+11    for(count=1;count<=num;count++)
+(gdb) n
+13      sum+=count;
+(gdb) n
+11    for(count=1;count<=num;count++)
+(gdb) n
+13      sum+=count;
+(gdb) n
+11    for(count=1;count<=num;count++)
+(gdb) n
+13      sum+=count;
+(gdb) n
+11    for(count=1;count<=num;count++)
+(gdb) n
+13      sum+=count;
+(gdb) n
+11    for(count=1;count<=num;count++)
+(gdb) n
+15    return sum;
+(gdb) n
+16  }
+(gdb) n
+main () at p3final.c:32
+32    sum=sum_n(num,count,sum);
+(gdb) s
+sum_n (num=5, count=15, sum=0) at p3final.c:11
+11    for(count=1;count<=num;count++)
+(gdb) n
+13      sum+=count;
+(gdb) n
+11    for(count=1;count<=num;count++)
+(gdb) n
+13      sum+=count;
+(gdb) n
+11    for(count=1;count<=num;count++)
+(gdb) n
+13      sum+=count;
+(gdb) n
+11    for(count=1;count<=num;count++)
+(gdb) n
+13      sum+=count;
+(gdb) n
+11    for(count=1;count<=num;count++)
+(gdb) n
+13      sum+=count;
+(gdb) n
+11    for(count=1;count<=num;count++)
+(gdb) n
+15    return sum;
+(gdb) n
+16  }
+(gdb) n
+main () at p3final.c:33
+33    output(sum,num);
+(gdb) s
+output (sum=15, num=5) at p3final.c:20
+20    for(j=1;j<num;j++)
+(gdb) n
+22      printf("%d+",j);
+(gdb) n
+20    for(j=1;j<num;j++)
+(gdb) n
+22      printf("%d+",j);
+(gdb) n
+20    for(j=1;j<num;j++)
+(gdb) n
+22      printf("%d+",j);
+(gdb) n
+20    for(j=1;j<num;j++)
+(gdb) n
+22      printf("%d+",j);
+(gdb) n
+20    for(j=1;j<num;j++)
+(gdb) n
+24      printf("%d is:%d",j,sum);
+(gdb) n
+26  }
+(gdb) n
+main () at p3final.c:34
+34    return 0;
+(gdb) n
+35  }(gdb) l
+30    num=input();
+31    count=sum_n(num,count,sum);
+32    sum=sum_n(num,count,sum);
+33    output(sum,num);
+34    return 0;
+35  }(gdb) q
+A debugging session is active.
+
+    Inferior 1 [process 121] will be killed.
+
+Quit anyway? (y or n) y

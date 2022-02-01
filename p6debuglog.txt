@@ -1,0 +1,79 @@
+cc -g p6final.c
+ gdb ./a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from ./a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x881: file p6final.c, line 28.
+(gdb) r
+Starting program: /home/runner/pps-IA1-practice/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p6final.c:28
+28  {
+(gdb) n
+30    stringinput(&a,&b);
+(gdb) s
+stringinput (a=0x7ffce728a600, b=0x7ffce728a640) at p6final.c:4
+4     printf("Enter first string:");
+(gdb) n
+5     scanf("%s",a[0]);
+(gdb) n
+Enter first string:hello
+6     printf("Enter second string:");
+(gdb) n
+7     scanf("%s",b[0]);
+(gdb) n
+Enter second string:world
+8   }
+(gdb) n
+main () at p6final.c:32
+32    result=stringcmp(a,b);
+(gdb) s
+stringcmp (a=0x7ffce728a600 "hello", b=0x7ffce728a640 "world") at p6final.c:11
+11    int i=0;
+(gdb) n
+12    while(a[i] && (a[i]==b[i]))
+(gdb) n
+16    return a[i]-b[i];
+(gdb) n
+17  }
+(gdb) n
+main () at p6final.c:33
+33    output(a,b,result);
+(gdb) s
+output (a=0x7ffce728a600 "hello", b=0x7ffce728a640 "world", result=-15)
+    at p6final.c:20
+20    if (result<0)
+(gdb) n
+21      printf("%s is greater than %s",b,a);
+(gdb) n
+26  }
+(gdb) n
+main () at p6final.c:34
+34    return 0;
+(gdb) l
+29    char a[50],b[50];
+30    stringinput(&a,&b);
+31    int result;
+32    result=stringcmp(a,b);
+33    output(a,b,result);
+34    return 0;
+35  }(gdb) q
+A debugging session is active.
+
+    Inferior 1 [process 114] will be killed.
+
+Quit anyway? (y or n) y

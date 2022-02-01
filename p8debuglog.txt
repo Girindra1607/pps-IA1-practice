@@ -1,0 +1,116 @@
+gcc -g p8final.c
+ gdb ./a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from ./a.out...done.
+(gdb) b main
+Breakpoint 1 at 0xa50: file p8final.c, line 68.
+(gdb) r
+Starting program: /home/runner/pps-IA1-practice/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p8final.c:68
+68  {
+(gdb) n
+69      int n = get_n();
+(gdb) n
+Enter the number of complex numbers to be added :2
+70      complex c[n],sum;
+(gdb) s
+71      input_n_complex(n,c);
+(gdb) s
+input_n_complex (n=2, c=0x7ffddb1d9a20) at p8final.c:35
+35    for(int i=0; i<n; i++)
+(gdb) n
+37      c[i] = input_complex();
+(gdb) n
+Enter the real part : 2
+Enter the imaginary part : 3
+35    for(int i=0; i<n; i++)
+(gdb) n
+37      c[i] = input_complex();
+(gdb) n
+Enter the real part : 3
+Enter the imaginary part : 2
+35    for(int i=0; i<n; i++)
+(gdb) n
+39  }
+(gdb) n
+main () at p8final.c:72
+72      sum = add_n_complex(n,c);
+(gdb) s
+add_n_complex (n=2, c=0x7ffddb1d9a20) at p8final.c:44
+44      sum.real = 0;
+(gdb) n
+45      sum.i = 0;
+(gdb) n
+46      for(int i = 0; i < n; i++){
+(gdb) n
+47          sum = add(sum, c[i]);
+(gdb) s
+add (a=..., b=...) at p8final.c:27
+27      sum.real = a.real + b.real;
+(gdb) n
+28      sum.i = a.i + b.i;
+(gdb) n
+29      return sum;
+(gdb) n
+30  }
+(gdb) n
+add_n_complex (n=2, c=0x7ffddb1d9a20) at p8final.c:46
+46      for(int i = 0; i < n; i++){
+(gdb) n
+47          sum = add(sum, c[i]);
+(gdb) n
+46      for(int i = 0; i < n; i++){
+(gdb) n
+49      return sum;
+(gdb) n
+50  }
+(gdb) n
+main () at p8final.c:73
+73      output(n,c,sum);
+(gdb) s
+output (n=2, c=0x7ffddb1d9a20, result=...) at p8final.c:53
+53      if(n==1)
+(gdb) n
+59          printf("The sum of ");
+(gdb) n
+60          for(int i=0; i<n-1; i++)
+(gdb) n
+62              printf("(%0.1f + %0.1fi) + ", c[i].real, c[i].i);
+(gdb) n
+60          for(int i=0; i<n-1; i++)
+(gdb) n
+64          printf(" (%0.1f + %0.1fi) is %0.1f + %0.1fi\n", c[n-1].real, c[n-1].i, result.real, result.i);
+(gdb) n
+The sum of (2.0 + 3.0i) +  (3.0 + 2.0i) is 5.0 + 5.0i
+66  }
+(gdb) n
+main () at p8final.c:74
+74      return 0;
+(gdb) n
+75  }(gdb) l
+70      complex c[n],sum;
+71      input_n_complex(n,c);
+72      sum = add_n_complex(n,c);
+73      output(n,c,sum);
+74      return 0;
+75  }(gdb) q
+A debugging session is active.
+
+    Inferior 1 [process 31] will be killed.
+
+Quit anyway? (y or n) y
